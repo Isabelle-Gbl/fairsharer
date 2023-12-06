@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 jobs:
   My-first-CI:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, windows-latest, macos-latest]
   steps:
   - uses: actions/checkout@v3
   - name: Set up Python
@@ -19,7 +19,8 @@ jobs:
       pip install -r requirements.txt
   - name: Lint with Ruff
     run: |
-      # ***add your command to run ruff here***
+      ruff check .
+      ruff fix .
   - name: Test with pytest
     run: |
       pytest
